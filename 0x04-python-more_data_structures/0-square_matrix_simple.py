@@ -2,7 +2,7 @@
 def square_matrix_simple(matrix=[]):
     sqrd_matrix = matrix.copy()
 
-    for i in range(len(matrix)):
-        sqrd_matrix[i] = list(map(lamda x: x**2, matrix[i]))
+    for list in matrix:
+        sqrd_matrix.append([n**2 for n in list])
 
-    return (sqrd_matrix)
+    return sqrd_matrix
