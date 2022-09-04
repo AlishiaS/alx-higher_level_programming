@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-for n1 in range(0, 10):
-    for n2 in range(n1, 10):
-        if n1 == 8 and n2 == 9:
-            print("{}{}".format(n1, n2))
-        else:
-            print("{}{}".format(n1, n2), end=", ")
+for num in range(10):
+    for n in range(num + 1, 10):
+        print("{}{}".format(num, n),
+                end=", "
+                if int(str(num) + str(n)) < 89 else "\n")
