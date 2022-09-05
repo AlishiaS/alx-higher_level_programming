@@ -1,3 +1,6 @@
 #!/usr/bin/python3
-for char in reversed(range(97, 123)):
-    print("(:c)".format(char if char % 2 == 0) else (char - 32)), end='')
+for c in range(122, 96, -1):
+    j = i
+    if c % 2 != 0:
+        j = c - 32
+    print("{}".format(chr(j)), end="")
