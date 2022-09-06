@@ -6,8 +6,8 @@ if __name__ == "__main__":
         print("0 argument.")
     else:
         if n == 2:
-            print("{:d} argument:".format(n - 1))
+            print("{} argument:".format(n - 1))
         else:
-            print("{:d} arguments:".format(n - 1))
+            print("{} arguments:".format(n - 1))
         for i in range(1, n):
-            print("{:d}: {}".format(i, sys.argv[i]))
+            print("{}: {}".format(i, sys.argv[i]))
