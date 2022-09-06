@@ -2,7 +2,6 @@
 if __name__ == "__main__":
     import sys
     n = len(sys.argv)
-
     if n <= 1:
         print("0 argument.")
     else:
