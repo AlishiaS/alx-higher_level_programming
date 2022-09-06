@@ -8,7 +8,7 @@ if __name__ == "__main__":
     else:
         if n == 2:
             print("{:d} argument:".format(n - 1))
-        elif:
+        else:
             print("{:d} arguments:".format(n - 1))
 
             for i in range(1, n):
