@@ -13,5 +13,5 @@ class Square:
         self.__sizeize = size
 
         def area(self):
-        """Square - Area"""
+            """Square - Area"""
             return (self.__size **2)
