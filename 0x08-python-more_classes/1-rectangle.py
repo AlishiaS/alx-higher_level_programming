@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """
+
 Rectangle Module
+
 
 Defines a Rectangle with width and height
 
@@ -17,7 +19,7 @@ class Rectangle:
         return self._width
 
     @width.setter
-    def width(self, value):
+    property setter def width(self, value):
         if type(value) is not int:
             raise TypeError('width must be an integer')
         if value < 0:
