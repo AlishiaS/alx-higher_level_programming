@@ -1,10 +1,8 @@
 #!/usr/bin/python3
 """
+Rectangle Module: Rectangle 1
 
-Rectangle Module
-
-Defines a Rectangle with width and height
-
+Description: Defines a Rectangle with width and height
 """
 
     class Rectangle:
