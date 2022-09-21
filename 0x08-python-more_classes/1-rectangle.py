@@ -5,7 +5,7 @@ This Module defines a Rectangle with width and height.
 
 
  class Rectangle:
-    """Rectangle with width and height attributes"""
+    """Returns a rectangle with width and height attributes"""
     def __init__(self, width=0, height=0):
         self.width = width
         self. height = height
