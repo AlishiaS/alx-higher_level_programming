@@ -5,13 +5,16 @@ This Module defines a Rectangle with width and height.
 
 
  class Rectangle:
-    """Returns a rectangle with width and height attributes"""
+    """rectangle with width and height attributes"""
+
     def __init__(self, width=0, height=0):
+        """initializes a new rectangle object with width and height"""
         self.width = width
         self. height = height
 
     @property
     def width(self):
+        """Sets the width of the rectangle"""
         return self._width
 
     @width.setter 
@@ -24,6 +27,7 @@ This Module defines a Rectangle with width and height.
 
     @property
     def height(self):
+        """Sets the height of the rectangle"""
         return self.__height
 
     @height.setter
