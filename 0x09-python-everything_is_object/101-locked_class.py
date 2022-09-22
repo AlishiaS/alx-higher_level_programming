@@ -4,7 +4,8 @@
 
 class LockedClass:
     """
-    Prevents the user from dynamically creating new instance attibutesexcept if the new instance attribute is called first_name
+    Prevents the user from dynamically creating new instance attibutes
+    except if the new instance attribute is called first_name
     """
 
     __name__ = ["first_name"]
