@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Class Square with size instance attribute
+"""This Module defines a class Square with size instance attribute
 """
 
 
