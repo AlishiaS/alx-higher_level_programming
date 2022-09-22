@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Class Square with size instance attribute"""
 
+
 class Square:
     """Square - class"""
 
