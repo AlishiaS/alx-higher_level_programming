@@ -1,12 +1,15 @@
 #!/usr/bin/python3
-"""Class Square with size instance attribute"""
+"""Class Square with size instance attribute
+"""
 
 
 class Square:
-    """Square class"""
+    """Square class
+    """
 
     def __init__(self, size=0):
-        """Defines a square object with public instance area"""   
+        """Defines a square object with public instance area
+        """
             if type(size) is not int:
                 raise TypeError('size must be an integer')
             else size < 0:
@@ -14,5 +17,6 @@ class Square:
         self.__size = size
 
     def area(self)
-    """Square with public instance area"""
+    """Square with public instance area
+    """
         return self.__size ** 2
