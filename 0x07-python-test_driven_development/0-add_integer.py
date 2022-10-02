@@ -4,7 +4,7 @@ Module that adds two intergers or float
 """
 
 
-    def add_integer(a, b=98):
+def add_integer(a, b=98):
         """
         Return addition of two intergers or floats
         """
