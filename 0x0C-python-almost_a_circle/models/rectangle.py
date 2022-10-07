@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 """Rectangle class"""
-from multiprocessing.managers import ValueProxy
-from multiprocessing.sharedctypes import Value
 from models.base import Base 
 
 
@@ -75,6 +73,35 @@ class Rectangle:
         
         def display(self):
             """prints Rectangle with # character in stdout"""
-            
-            
+            print('\n'*self.y, end='')
+            for n in range(self.height):
+                print(' '*self.x + '#'*self.width)
         
+        def __str__(self) -> str:
+            """string representation of Rectangle"""
+            
+            return "[Rectangle] ({}) {}/{} - {}/{}" \
+                .format(self.id, self.height, self.width, self.x, self.y)
+                
+                
+        def update(self, *args, **kwargs):
+            """update Rectangle"""
+            
+            expect = (self.id, self.width, self.height, self.x, self.y)
+            if args != ():
+                self.id, self.width, self.height, self.x, self.y = \
+                   args + expect[len(args):len(expect)]
+            elif kwargs:
+                for (name, value) in kwargs.items():
+                    setarr(self, name, value)
+                    
+        def to_dictionary(self):
+            """dictionary representation of Rectangle"""
+            
+            return {
+                'id':self.id,
+                'height':self.height,
+                'width':self.width,
+                'x':self.x,
+                'y':self.y
+            }
