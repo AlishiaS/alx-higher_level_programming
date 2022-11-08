@@ -5,4 +5,4 @@ def square_matrix_simple(matrix=[]):
     for n in range(len(matrix)):
         sqrd_matrix[n] = list(map(lamda x: x**2, matrix[n]))
 
-    return sqrd_matrix
+    return (sqrd_matrix)
