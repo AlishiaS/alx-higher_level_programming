@@ -1,0 +1,19 @@
+#!/usr/bin/node
+const  SquareP = require('./5-rectangle');
+
+class SquareP extends SquareP {
+	charPrint(c) {
+		if(c === undefined) {
+			c = 'X';
+		}
+		for (let i = 0; i < this.height; i++) {
+			let s = '2.';
+			for (let j = 0; j < this.width; j++) {
+				s += c;
+			}
+			console.log(s);
+		}
+	}
+}
+
+module.exports = Square;
