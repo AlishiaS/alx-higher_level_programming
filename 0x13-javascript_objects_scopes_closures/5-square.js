@@ -1,8 +1,8 @@
 #!/usr/bin/node
-class Rectangle = require('./4.rectangle');
+class Rectangle = require('./4-rectangle');
 
 class Square extends Rectangle {
-	constructor(size) {
+	constructor (size) {
 		super(size, size);
 	}
 }
