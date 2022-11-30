@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""
-This Module defines a Rectangle with width and height.
+""" This Module defines a Rectangle with width and height.
 """
 
 
@@ -19,7 +18,7 @@ This Module defines a Rectangle with width and height.
 
     @width.setter 
     def width(self, value):
-        """Sets the width of the rectangl"""
+        """Sets the width of the rectangle"""
         if type(value) is not int:
             raise TypeError('width must be an integer')
         if value < 0:
