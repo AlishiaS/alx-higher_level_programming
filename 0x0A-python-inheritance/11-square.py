@@ -15,6 +15,5 @@ class Square(Rectangle):
             raise ValueError("size must be greater than 0")
         self.__size = size
 
-
     def __str__(self):
         return '[Square] {size}/{size}'.format(size=self.__size)
