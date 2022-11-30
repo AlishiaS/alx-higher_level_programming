@@ -10,7 +10,7 @@ This Module defines a Rectangle with width and height.
     def __init__(self, width=0, height=0):
         """initializes a new rectangle object with width and height"""
         self.width = width
-        self. height = height
+        self.height = height
 
     @property
     def width(self):
