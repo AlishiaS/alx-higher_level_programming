@@ -1,5 +1,5 @@
 #!/usr/bin/node
-//defines a square and inherits from Rectangle of 4-rectangle.js
+//defines a square and inherits from Rectangle
 const Rectangle = require('./4-rectangle');
 
 class Square extends Rectangle {
