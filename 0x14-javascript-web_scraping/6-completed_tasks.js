@@ -8,7 +8,7 @@ request(process.argv[2], function (error, response, body) {
     const userTasks = {};
     for (const todo of todos) {
       if (todo.completed) {
-        const tasls = userTasks[todo.userId];
+        const tasks = userTasks[todo.userId];
         userTasks[todo.userId] = tasks ? tasks + 1 : 1;
       }
     }
