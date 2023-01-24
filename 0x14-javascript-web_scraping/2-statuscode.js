@@ -1,5 +1,7 @@
 #!/usr/bin/node
+if (process.argv.length < 3) process.exit();
 const request = require('request');
-request.get(process.argv[2]).on('response', function (response) {
-  console.log(`code: ${response.statusCode}`);
+
+request(process.argv[2], function (error, res, body) {
+  if (error) { console.log(error); } else { console.log('code', res.statusCode); }
 });
