@@ -9,24 +9,24 @@
 
 int check_cycle(listint_t *list)
 {
-listint_t *hare = NULL;
-listint_t *tortoise = NULL;
+listint_t *x = NULL;
+listint_t *y = NULL;
 if (list == NULL || list->next == NULL)
 return (0);
 
-hare = list->next->next;
-tortoise = list;
-while (hare != NULL)
+x = list->next->next;
+y = list;
+while (x != NULL)
 {
-if (hare == tortoise)
+if (x == y)
 {
 return (1);
 }
-tortoise = tortoise->next;
-if (hare->next != NULL)
-hare = hare->next->next;
+y = y->next;
+if (x->next != NULL)
+x = x->next->next;
 else
-hare = hare->next;
+x = hare->next;
 }
 return (0);
 }
