@@ -1,104 +1,76 @@
-#include <Python.h>
+#!/usr/bin/python3
 
-void print_python_list(PyObject *p);
-void print_python_bytes(PyObject *p);
-void print_python_float(PyObject *p);
+"""Define classes for a singly-linked list."""
 
-/**
- * print_python_list - Prints basic info about Python lists.
- * @p: A PyObject list object.
- */
-void print_python_list(PyObject *p)
-{
-	Py_ssize_t size, alloc, i;
-	const char *type;
-	PyListObject *list = (PyListObject *)p;
-	PyVarObject *var = (PyVarObject *)p;
+class Node:
+    """Represent a node in a singly-linked list."""
 
-	size = var->ob_size;
-	alloc = list->allocated;
+    def __init__(self, data, next_node=None):
+        """Initialize a new Node.
+        Args:
+            data (int): The data of the new Node.
+            next_node (Node): The next node of the new Node.
+        """
+        self.data = data
+        self.next_node = next_node
 
-	fflush(stdout);
+    @property
+    def data(self):
+        """Get/set the data of the Node."""
+        return (self.__data)
 
-	printf("[*] Python list info\n");
-	if (strcmp(p->ob_type->tp_name, "list") != 0)
-	{
-		printf("  [ERROR] Invalid List Object\n");
-		return;
-	}
+    @data.setter
+    def data(self, value):
+        if not isinstance(value, int):
+            raise TypeError("data must be an integer")
+        self.__data = value
 
-	printf("[*] Size of the Python List = %ld\n", size);
-	printf("[*] Allocated = %ld\n", alloc);
+    @property
+    def next_node(self):
+        """Get/set the next_node of the Node."""
+        return (self.__next_node)
 
-	for (i = 0; i < size; i++)
-	{
-		type = list->ob_item[i]->ob_type->tp_name;
-		printf("Element %ld: %s\n", i, type);
-		if (strcmp(type, "bytes") == 0)
-			print_python_bytes(list->ob_item[i]);
-		else if (strcmp(type, "float") == 0)
-			print_python_float(list->ob_item[i]);
-	}
-}
+    @next_node.setter
+    def next_node(self, value):
+        if not isinstance(value, Node) and value is not None:
+            raise TypeError("next_node must be a Node object")
+        self.__next_node = value
 
-/**
- * print_python_bytes - Prints basic info about Python byte objects.
- * @p: A PyObject byte object.
- */
-void print_python_bytes(PyObject *p)
-{
-	Py_ssize_t size, i;
-	PyBytesObject *bytes = (PyBytesObject *)p;
 
-	fflush(stdout);
+class SinglyLinkedList:
+    """Represent a singly-linked list."""
 
-	printf("[.] bytes object info\n");
-	if (strcmp(p->ob_type->tp_name, "bytes") != 0)
-	{
-		printf("  [ERROR] Invalid Bytes Object\n");
-		return;
-	}
+    def __init__(self):
+        """Initialize a new SinglyLinkedList."""
+        self.__head = None
 
-	printf("  size: %ld\n", ((PyVarObject *)p)->ob_size);
-	printf("  trying string: %s\n", bytes->ob_sval);
+    def sorted_insert(self, value):
+        """Insert a new Node to the SinglyLinkedList.
+        The node is inserted into the list at the correct
+        ordered numerical position.
+        Args:
+            value (Node): The new Node to insert.
+        """
+        new = Node(value)
+        if self.__head is None:
+            new.next_node = None
+            self.__head = new
+        elif self.__head.data > value:
+            new.next_node = self.__head
+            self.__head = new
+        else:
+            tmp = self.__head
+            while (tmp.next_node is not None and
+                    tmp.next_node.data < value):
+                tmp = tmp.next_node
+            new.next_node = tmp.next_node
+            tmp.next_node = new
 
-	if (((PyVarObject *)p)->ob_size >= 10)
-		size = 10;
-	else
-		size = ((PyVarObject *)p)->ob_size + 1;
-
-	printf("  first %ld bytes: ", size);
-	for (i = 0; i < size; i++)
-	{
-		printf("%02hhx", bytes->ob_sval[i]);
-		if (i == (size - 1))
-			printf("\n");
-		else
-			printf(" ");
-	}
-}
-
-/**
- * print_python_float - Prints basic info about Python float objects.
- * @p: A PyObject float object.
- */
-void print_python_float(PyObject *p)
-{
-	char *buffer = NULL;
-
-	PyFloatObject *float_obj = (PyFloatObject *)p;
-
-	fflush(stdout);
-
-	printf("[.] float object info\n");
-	if (strcmp(p->ob_type->tp_name, "float") != 0)
-	{
-		printf("  [ERROR] Invalid Float Object\n");
-		return;
-	}
-
-	buffer = PyOS_double_to_string(float_obj->ob_fval, 'r', 0,
-			Py_DTSF_ADD_DOT_0, NULL);
-	printf("  value: %s\n", buffer);
-	PyMem_Free(buffer);
-}
+    def __str__(self):
+        """Define the print() representation of a SinglyLinkedList."""
+        values = []
+        tmp = self.__head
+        while tmp is not None:
+            values.append(str(tmp.data))
+            tmp = tmp.next_node
+        return ('\n'.join(values))
