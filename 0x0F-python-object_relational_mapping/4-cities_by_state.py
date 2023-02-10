@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
 This module uses MySQLdb to connect to a database passed from the command
-line and performs sql operations (CRUD)
+line and performs a search on the database db_name for states
+with names equal to the name passed at command line.
 """
 import MySQLdb
 import sys
@@ -16,7 +17,8 @@ def main(username, password, db_name):
     db = MySQLdb.connect(host='localhost', db=db_name, user=username,
                          passwd=password, port=3306)
     cursor = db.cursor()
-    cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
+    cursor.execute("SELECT cities.id, cities.name, states.name FROM cities \
+JOIN states ON states.id = cities.state_id")
     for entry in cursor.fetchall():
         print(entry)
     cursor.close()
