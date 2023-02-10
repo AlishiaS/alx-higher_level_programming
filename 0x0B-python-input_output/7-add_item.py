@@ -1,25 +1,26 @@
 #!/usr/bin/python3
-"""Module 9-add_item.
-Adds all arguments to a Python list,
-and then save them to a file.
 """
-
-import sys
+This module provides a function that reads command
+line argument adds them to a list and serialize into
+a file
+"""
 import json
-import os.path
+import sys
+load = __import__("6-load_from_json_file").load_from_json_file
+save = __import__("5-save_to_json_file").save_to_json_file
 
-save_to_json_file = __import__("5-save_to_json_file").save_to_json_file
-load_from_json_file = __import__("6-load_from_json_file").load_from_json_file
 
-my_file = 'add_item.json'
+def add_item(args, filename):
+    try:
+        list_obj = load(filename)
+    except FileNotFoundError:
+        list_obj = []
+    i = 1
+    while i < len(args):
+        list_obj.append(args[i])
+        i += 1
+    save(list_obj, filename)
 
-my_list = []
 
-if os.path.exists(my_file) and os.path.getsize(my_file) > 0:
-    my_list = load_from_json_file(my_file)
-
-if len(sys.argv) > 1:
-    for elem in sys.argv[1:]:
-        my_list.append(elem)
-
-save_to_json_file(my_list, my_file)
+if __name__ == "__main__":
+    add_item(sys.argv, "add_item.json")
