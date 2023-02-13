@@ -1,3 +1,3 @@
 #!/bin/bash
-# displays the body of the response
-curl -sfL "$1" -X GET
+# use curl to display content
+curl -sL "$1"

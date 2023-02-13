@@ -1,3 +1,3 @@
 #!/bin/bash
-# displays the body of the response
-curl -s "$1" -X DELETE
+# delete request
+curl -s -X "DELETE" "$1"
