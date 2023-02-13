@@ -1,29 +1,15 @@
 #!/usr/bin/python3
 """
-This module uses MySQLdb to connect to a database passed from the command
-line and performs a search on the database db_name for states
-with names starting with exactly 'N'
+Lists all states with a name starting with N from the database hbtn_0e_0_usa.
+Usage: ./1-filter_states.py <mysql username> \
+                             <mysql password> \
+                             <database name>
 """
-import MySQLdb
 import sys
-
-
-def main(username, password, db_name):
-    """
-    The main function acts as the entry point into the main functionality
-    It makes the connection and calls the cursor on the db connection which is
-    later used to make sql queries
-    """
-    db = MySQLdb.connect(host='localhost', db=db_name, user=username,
-                         passwd=password, port=3306)
-    cursor = db.cursor()
-    cursor.execute("SELECT * FROM states WHERE states.name LIKE BINARY 'N%' \
-ORDER BY states.id ASC")
-    for entry in cursor.fetchall():
-        print(entry)
-    cursor.close()
-    db.close()
-
+import MySQLdb
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2], sys.argv[3])
+    db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
+    c = db.cursor()
+    c.execute("SELECT * FROM `states` ORDER BY `id`")
+    [print(state) for state in c.fetchall() if state[1][0] == "N"]
