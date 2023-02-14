@@ -1,6 +1,6 @@
-#!/usr/bin/node
-const fs = require('fs');
-if (process.argv.length < 4) { process.exit(); }
-fs.writeFile(process.argv[2], process.argv[3], { encoding: 'utf' }, (error) => {
-  if (error) { console.log(error);}
-});
+#!/usr/bin/env bash
+# run apache on holbertonschool/265-0 container
+
+echo "ServerName localhost" >> /etc/apache2.conf
+service apache2 start
+z
