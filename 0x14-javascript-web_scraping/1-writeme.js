@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# run apache on holbertonschool/265-0 container
-
+# Debugging a web server running on Docker
 echo "ServerName localhost" >> /etc/apache2.conf
 service apache2 start
-z
+# apache2ctl -D FOREGROUND
