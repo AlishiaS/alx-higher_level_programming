@@ -1,5 +1,6 @@
-#!/usr/bin/env bash
-# Debugging a web server running on Docker
-echo "ServerName localhost" >> /etc/apache2.conf
-service apache2 start
-# apache2ctl -D FOREGROUND
+#!/usr/bin/node
+const fs = require('fs');
+if (process.argv.length < 4) { process.exit(); }
+fs.writeFile(process.argv[2], process.argv[3], { encoding: 'utf' }, (error) => {
+  if (error) { console.log(error);}
+});
